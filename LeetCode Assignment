@@ -1,0 +1,69 @@
+/**
+ * @param {number} n
+ * @return {Function} counter
+ */
+var createCounter = function(n) {
+    let a = n;
+    return function() {
+      console.log(a)
+      a++
+    };
+};
+
+
+ const counter = createCounter(10)
+ counter() // 10
+ counter() // 11
+ counter() // 12
+ counter()
+ counter()
+ counter()
+
+var filter = function(arr, fn) {
+  let newarr = [];
+    arr.filter((arguments,index)=>{
+    let trm = fn(arguments,index);
+    if(trm){
+      newarr.push(arguments);
+    }
+  });
+  return (newarr);
+};
+console.log(filter([-2,-1,0,1,2],fn =function plusOne(n) { return n + 1 }));
+
+var isEmpty = (obj)=>{
+  for (let i in obj){
+    return false;
+  }
+  return true 
+}
+console.log(isEmpty())
+
+var findRelativeRanks = function(score) {
+  let newarr = [];
+  let arr = [...score];
+  console.log(arr)
+  score.sort((a,b)=>{
+    return b-a
+  });
+  let cmp = score.slice(0,3)
+  console.log(arr,cmp,score)
+  for (let i = 0; i < arr.length; i++){
+      if (arr[i] == cmp[0]){
+        newarr.push("Gold Medal")
+      }
+      else if (arr[i] == cmp[1]){
+        newarr.push("Silver Medal")
+      }
+      else if (arr[i] == cmp[2]){
+        newarr.push("Bronze Medal")
+      }
+      else {
+        newarr.push((i+1).toString())
+      }
+  }
+  return newarr;
+}
+
+  
+console.log(findRelativeRanks([10,3,8,9,4]))
